@@ -1,0 +1,7 @@
+[package]
+name = "test-libusb-sys"
+edition = "2018"
+
+[dependencies]
+libusb-sys = "0.2.6"
+
