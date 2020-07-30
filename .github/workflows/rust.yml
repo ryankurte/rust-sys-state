@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        packages:
+        package:
           - test-libsodium-sys
           - test-libusb-sys
     steps:
@@ -26,6 +26,7 @@ jobs:
     - uses: actions-rs/cargo@v1
       with:
         command: build
+        args: --manifest-path=${{ matrix.package }}/Cargo.toml
   
   build_cross:
     runs-on: ${{ matrix.os }}
@@ -33,7 +34,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
         target: [armv7-unknown-linux-gnueabihf, thumbv7em-none-eabihf]
-        packages:
+        package:
           - test-libsodium-sys
     steps:
     - uses: actions/checkout@v2
@@ -45,6 +46,6 @@ jobs:
     - uses: actions-rs/cargo@v1
       with:
         command: build
-        args: --target ${{ matrix.target }}
+        args: --target ${{ matrix.target }} --manifest-path=${{ matrix.package }}/Cargo.toml
 
 
