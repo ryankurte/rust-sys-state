@@ -1,0 +1,7 @@
+[package]
+name = "test-libsodium-sys"
+edition = "2018"
+
+[dependencies]
+libsodium-sys = "0.2.6"
+
